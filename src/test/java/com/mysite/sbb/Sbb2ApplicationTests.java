@@ -4,6 +4,8 @@ import com.mysite.sbb.Answer.Answer;
 import com.mysite.sbb.Answer.AnswerRepository;
 import com.mysite.sbb.Question.Question;
 import com.mysite.sbb.Question.QuestionRepository;
+import com.mysite.sbb.Question.QuestionService;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,6 +26,9 @@ class Sbb2ApplicationTests {
 
     @Autowired
     private AnswerRepository answerRepository;
+
+    @Autowired
+    private QuestionService questionService;
 
     @Test
     void t001() {
@@ -128,6 +133,16 @@ class Sbb2ApplicationTests {
 
         assertEquals(1, answerList.size());
         assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
+    }
+
+    @Test
+    @DisplayName("대용량 테스트 데이터 생성")
+    void t012() {
+        for(int i=1; i<=300; i++) {
+            String subject = String.format("테스트 데이터입니다:[%03d]", i);
+            String content = "내용입니다.";
+            questionService.create(subject, content);
+        }
     }
 
 }

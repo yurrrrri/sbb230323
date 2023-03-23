@@ -1,4 +1,4 @@
-package com.mysite.sbb.Question;
+package com.mysite.sbb.question;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

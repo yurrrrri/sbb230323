@@ -1,4 +1,4 @@
-package com.mysite.sbb.User;
+package com.mysite.sbb.user;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -44,5 +44,10 @@ public class UserController {
         }
 
         return "redirect:/";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login_form";
     }
 }

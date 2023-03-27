@@ -9,3 +9,8 @@ html > body {
     font-family: "GmarketSansMedium";
     text-underline-position: under;
 }
+
+.comment {
+    border-top: 1px #ddd;
+    font-size: 0.7em;
+}

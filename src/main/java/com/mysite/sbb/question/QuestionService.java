@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -53,7 +54,10 @@ public class QuestionService {
     public Question getQuestion(Integer id) {
         Optional<Question> oq = questionRepository.findById(id);
         if(oq.isPresent()) {
-            return oq.get();
+            Question question = oq.get();
+            question.setView(question.getView() + 1);
+            questionRepository.save(question);
+            return question;
         } else {
             throw new DataNotFoundException("question not found");
         }

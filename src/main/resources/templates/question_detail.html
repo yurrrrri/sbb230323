@@ -4,6 +4,7 @@
         <h2 class="border-bottom py-2" th:text="${question.subject}"></h2>
         <div class="card my-3">
             <div class="card-body">
+                <div th:text="|조회수 : ${question.view}|" class="d-flex justify-content-end fw-bold"></div>
                 <div class="card-text" th:utext="${@commonUtil.markdown(question.content)}"></div>
                 <div class="d-flex justify-content-end">
                     <div th:if="${question.modifyDate != null}" class="badge bg-light text-dark p-2 text-start mx-3">

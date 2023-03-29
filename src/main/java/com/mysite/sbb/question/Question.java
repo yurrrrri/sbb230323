@@ -40,4 +40,7 @@ public class Question {
 
     @OneToMany(mappedBy = "question")
     private List<Comment> commentList;
+
+    @Column(columnDefinition = "integer default 0", nullable = false)
+    private int view;
 }
